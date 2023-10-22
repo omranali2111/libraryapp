@@ -28,6 +28,8 @@ function fetchBooks() {
                 };
             });
 
+           
+
             const ul = document.getElementById("booksList");
             ul.innerHTML = "";
             booksList.forEach(book => {
@@ -45,4 +47,13 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
+function logout() {
+                
+    localStorage.removeItem('authToken');
+
+    // Redirect the user to the login page
+    window.location.href = 'login.html'; 
+}
+
+
 

@@ -12,8 +12,8 @@
     text-align: center;
     padding: 30px 10px;
     font-size: 28px;
-    font-weight: 700; /* Using the bold weight of Montserrat */
-    font-family: 'Montserrat', sans-serif; /* Montserrat font applied */
+    font-weight: 700; 
+    font-family: 'Montserrat', sans-serif; 
 }
 
 
@@ -47,14 +47,33 @@ footer {
 .left-section select {
     display: block;
     width: 100%;
-    padding: 8px 10px; /* Added padding for a better touch feel */
-    margin-bottom: 20px; /* Increased spacing between dropdowns */
+    padding: 8px 10px; 
+    margin-bottom: 20px;
     border: 1px solid #b3b1a6;
-    border-radius: 5px; /* Slight rounding of corners */
+    border-radius: 5px; 
     background-color: #ffffff;
-    font-family: 'Montserrat', sans-serif; /* Consistency in font */
+    font-family: 'Montserrat', sans-serif; 
 }
 
+#logout-button {
+    background-color: rgba(255, 0, 0, 0.808);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 10px 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: absolute;
+    top: 30px;
+    right: 20px;;
+}
+
+#logout-button:hover {
+    background-color: darkred;
+}
 
 
         
@@ -66,6 +85,7 @@ footer {
    
 <header>
     Library Management System
+    <button onclick="logout()" id="logout-button">Logout</button>
 </header>
 
 <section class="left-section">
