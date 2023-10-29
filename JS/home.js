@@ -1,19 +1,20 @@
 
-
-
-    
-
 const main = document.getElementById("main");
 const form = document.getElementById("form");
-const search = document.getElementById("search");
+const search = document.getElementById(".search");
 const apiUrl = "https://localhost:7166/api/BookOperation";
-showBooks(apiUrl);
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    showBooks(apiUrl);
+});
 
 function showBooks(url) {
-   
     const requestOptions = {
         method: "GET",
-        
         redirect: "follow",
     };
 
@@ -26,10 +27,14 @@ function showBooks(url) {
                 const image = document.createElement('img');
                 const text = document.createElement('h2');
 
-                text.innerHTML = book.title;
-
-                
-                image.src = book.imagePath; 
+                text.innerHTML = book.title; 
+                image.src = book.imagePath;
+                el.addEventListener('click', () => {
+                    console.log("Book element clicked");
+                    
+                    sessionStorage.setItem('clickedBook', JSON.stringify(book));
+                    window.location.href = "BookModal.html"; 
+                });
 
                 el.appendChild(image);
                 el.appendChild(text);
@@ -37,6 +42,7 @@ function showBooks(url) {
             });
         });
 }
+
 
 
 function searchBook(SEARCHAPI) {
@@ -56,9 +62,15 @@ function searchBook(SEARCHAPI) {
                 const text = document.createElement('h2');
 
                 text.innerHTML = book.title;
-
-                
                 image.src = book.imagePath; 
+                el.addEventListener('click', () => {
+                    console.log("Book element clicked");
+                    
+                    sessionStorage.setItem('clickedBook', JSON.stringify(book));
+                    window.location.href = "BookModal.html"; 
+                });
+
+              
 
                 el.appendChild(image);
                 el.appendChild(text);
@@ -66,16 +78,31 @@ function searchBook(SEARCHAPI) {
             });
         });
 }
-search.addEventListener("input", () => {
-    main.innerHTML = '';
 
-    const searchTerm = search.value.trim();
-    const SEARCHAPI =`https://localhost:7166/api/BookOperation/ByTitle?title=${searchTerm}`
-    
-    if (searchTerm) {
-        searchBook(SEARCHAPI);
-    }
+
+
+
+const searchInputs = document.querySelectorAll(".search");
+
+searchInputs.forEach(input => {
+    input.addEventListener("input", () => {
+        main.innerHTML = '';
+        const searchTerm = input.value.trim();
+        const SEARCHAPI = `https://localhost:7166/api/BookOperation/ByTitle?title=${searchTerm}`;
+        
+        if (searchTerm) {
+            searchBook(SEARCHAPI);
+        }else{
+            
+            showBooks(apiUrl);
+        }
+    });
 });
+
+
+
+
+
 
 function onSuccessfulLogin() {
     const signoutHeader = document.querySelector('.signout-header');
@@ -92,7 +119,7 @@ function onSuccessfulLogin() {
     }
 }
 document.addEventListener('DOMContentLoaded', function() {
-    const token = localStorage.getItem('authToken');
+    const token = localStorage.getItem('authTokenforPatron');
     
     if (token) {
         onSuccessfulLogin();
@@ -110,9 +137,8 @@ function logout() {
     const signoutHeader = document.querySelector('.signout-header');
     signoutHeader.style.display = 'none';
     
-    localStorage.removeItem("authToken");
+    localStorage.clear();
   
-    // Redirect the user to the login page
-   // window.location.href = "login.html";
+    
   }
 

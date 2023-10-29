@@ -3,32 +3,41 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 body{
+    background-color: gray;  
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
 }
-.login-header{
+
+.login-header,
+.signout-header {
     width: 100%;
     height: 60px;
     background: rgb(38, 39, 38);
     display: flex;
     align-items: center;
-    justify-content: flex;
+    justify-content: space-between; /* changed from flex to space-between for better spacing */
     border-bottom: 1px solid #ccc;
+    padding: 10px 20px;
 }
+
 header h1{
     margin: 0 20px;
     color: #fff;
 }
+
 header a {
     text-decoration: none;
 }
+
 header form{
     display: flex;
     align-items: center;
 }
-#search{
+
+.search{
     width: 280px;
     height: 30px;
     border: 1px solid black;
@@ -36,30 +45,27 @@ header form{
     border-radius: 20px;
     padding-left: 15px;
 }
+
 main{
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
+
 main div{
     width: 250px;
     height: 320px;
     margin: 19px 15px;
     background: rgb(34, 91, 214);
-    
 }
-body{
-    background-color: gray;  
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-}
+
 img{
     width: 100%;
     height: 89%;
     object-fit: cover;
 }
+
 h2{
     font-size: 16px;
     font-family: sans-serif;
@@ -67,60 +73,41 @@ h2{
     text-align: center;
     color: #fff;
 }
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-}
 
 .buttons {
     display: flex;
     gap: 10px;
-  
 }
 
-.login-btn, .signup-btn {
+.login-btn, .signup-btn, .signout-btn {
     padding: 8px 15px; 
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    color: white;
 }
 
 .login-btn {
     background-color: #2D9CDB; /* blue color */
-    color: white;
 }
 
 .signup-btn {
     background-color: #56CCF2; /* light blue color */
-    color: white;
 }
 
 .login-btn:hover, .signup-btn:hover {
     background-color: #227093; /* darker shade for hover effect */
 }
-.signout-header {
-    display: none;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: rgb(38, 39, 38);
-    border-bottom: 1px solid #ccc;
-}
 
 .signout-btn {
-    padding: 8px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
     background-color: #E74C3C; /* red color */
-    color: white;
-    transition: background-color 0.3s;
 }
 
 .signout-btn:hover {
     background-color: #C0392B; /* darker shade of red for hover effect */
 }
 
+.signout-header {
+    display: none;
+}
