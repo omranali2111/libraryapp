@@ -53,11 +53,22 @@ main{
     justify-content: center;
 }
 
-main div{
+main div {
     width: 250px;
-    height: 320px;
+    height: 330px;
     margin: 19px 15px;
-    background: rgb(34, 91, 214);
+    background: #56b4d1;
+    border-radius: 8px; 
+    overflow: hidden; 
+    cursor: pointer; 
+    transition: transform 0.2s, box-shadow 0.3s; 
+     
+}
+
+main div:hover {
+    background: rgb(24, 81, 204); 
+    transform: scale(1.03); 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); 
 }
 
 img{
@@ -72,6 +83,7 @@ h2{
     font-weight: bold;
     text-align: center;
     color: #fff;
+    
 }
 
 .buttons {
@@ -158,8 +170,47 @@ h2{
     font-size: 28px;
     color: #333333;
     margin-bottom: 10px;
-    font-weight: 500;  /* Semi-bold title */
+    font-weight: 500;  
 }
+.book-details h2 {
+    font-size: 24px;
+    color: #556B2F; 
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: 2px solid #556B2F; 
+    padding-bottom: 5px;
+    transition: color 0.3s; 
+}
+
+.book-details h2:hover {
+    color: #6B8E23; 
+}
+
+.borrow-btn {
+    display: block;
+    margin: -50px auto 10px; /* Adjust as needed */
+    padding: 15px 80px;
+    background-color: #556B2F; /* Olive green */
+    color: #ffffff; /* White text */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.borrow-btn:hover {
+    background-color: #6B8E23; /* Lighter shade of olive green for hover effect */
+}
+.not-available {
+    background-color: red;
+}
+.book-actions {
+    display: flex;
+    flex-direction: column; /* This ensures that the elements inside stack vertically */
+    gap: 70px; /* Space between elements inside the container */
+}
+
 
 .book-author,
 .publication-year {

@@ -1,3 +1,6 @@
+
+
+
 document.getElementById('addBookForm').addEventListener('submit', function(e) {
     e.preventDefault();  // Prevent the form from refreshing the page
 
@@ -19,13 +22,16 @@ document.getElementById('addBookForm').addEventListener('submit', function(e) {
         imagePath: image,
         description: description
     };
-
+    var token = localStorage.getItem("authToken"); 
     // Convert the data to a JSON string
     const jsonData = JSON.stringify(rawData);
 
     // Your existing fetch code, using jsonData
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
+    if(token) {
+        myHeaders.append("Authorization", "Bearer " + token);
+    }
 
     var requestOptions = {
         method: 'POST',
@@ -66,3 +72,7 @@ document.getElementById('addBookForm').addEventListener('submit', function(e) {
             }, 3000);
         });
 });
+
+
+
+

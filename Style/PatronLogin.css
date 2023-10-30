@@ -1,71 +1,88 @@
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #f5f5f5;
+    background-color: #f2f3f7;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
 }
 
 .login-container {
-    width: 300px;
-    padding: 20px;
+    width: 320px;
+    padding: 30px;
     background-color: #fff;
-    border: 1px solid #dadce0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    border: none;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05), 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+.login-container:hover {
+    transform: scale(1.02); 
 }
 
 .login-header {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    text-align: center;
 }
 
 .login-header h2 {
-    font-size: 24px;
-    color: #202124;
+    font-size: 26px;
+    color: #333;
     margin: 0;
+    font-weight: 500;
 }
 
 .login-input {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #dadce0;
-    border-radius: 4px;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
     font-size: 14px;
     outline: none;
-    transition: border 0.2s;
+    background-color: #f9fafc;
+    transition: border 0.2s, box-shadow 0.2s;
 }
 
 .login-input:focus {
-    border-color: #4885ed;
+    border-color: #6887ff;
+    box-shadow: 0 0 0 3px rgba(104, 135, 255, 0.2);
 }
 
 .submit-button {
     width: 100%;
-    padding: 10px;
-    background-color: #4885ed;
+    padding: 12px 15px;
+    background-color: #6887ff;
     color: #fff;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, transform 0.1s;
 }
 
 .submit-button:hover {
-    background-color: #357abf;
+    background-color: #5670d9;
+}
+
+.submit-button:active {
+    transform: scale(0.98); 
 }
 
 .signup-link {
-    margin-top: 20px;
+    margin-top: 25px;
     text-align: center;
 }
 
 .signup-link a {
-    color: #4885ed;
+    color: #6887ff;
     text-decoration: none;
+    transition: color 0.2s;
 }
 
 .signup-link a:hover {
+    color: #5670d9;
     text-decoration: underline;
 }

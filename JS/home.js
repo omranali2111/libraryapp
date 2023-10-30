@@ -29,7 +29,7 @@ function showBooks(url) {
         text.innerHTML = book.title;
         image.src = book.imagePath;
     
-      
+       
        
     
         // Add event listener to the el div
@@ -47,9 +47,13 @@ function showBooks(url) {
                     <img src="${book.imagePath}" alt="${book.title}" class="book-image">
                     <div class="book-details">
                         <h2>${book.title}</h2>
-                        <p class="book-author">${book.author}</p>
-                        <p class="publication-year">${book.publicationYear}</p>
+                        <p class="book-author">By ${book.author}</p>
+                        <p class="publication-year">Published In ${book.publicationYear}</p>
+                        <div class="book-actions">
                         <p class="book-description">${book.description}</p>
+                        <button class="borrow-btn" onclick="handleBorrowClick(${book.id})">Borrow</button>
+
+                         </div>
                     </div>
                 </div>
             `;
@@ -114,9 +118,13 @@ function searchBook(SEARCHAPI) {
                             <img src="${book.imagePath}" alt="${book.title}" class="book-image">
                             <div class="book-details">
                                 <h2>${book.title}</h2>
-                                <p class="book-author">${book.author}</p>
-                                <p class="publication-year">${book.publicationYear}</p>
-                                <p class="book-description">${book.description}</p>
+                                <p class="book-author">By ${book.author}</p>
+                                <p class="publication-year">Published In ${book.publicationYear}</p>
+                                <div class="book-actions">
+                        <p class="book-description">${book.description}</p>
+                        <button class="borrow-btn" onclick="handleBorrowClick(${book.id})">Borrow</button>
+
+                         </div>
                             </div>
                         </div>
                     `;
@@ -232,5 +240,76 @@ function logout() {
     
   }
 
+  function handleBorrowClick(bookId) {
+    const token = localStorage.getItem('authToken'); // Get token from local storage
 
+    if (!token) { // If token is missing
+        window.location.href = 'PatronLogin.html'; // Redirect to login page
+    } else {
+        const patronId = localStorage.getItem('patronId'); 
+
+        if (bookId && patronId) {
+            borrowBook(token, bookId, patronId);
+        } else {
+            console.log("Missing book ID or patron ID");
+        }
+    }
+}
+
+
+function borrowBook(token, bookId, patronId) {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", `Bearer ${token}`);
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({
+        "patronId": patronId,
+        "bookId": bookId
+    });
+
+    var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+    };
+
+    fetch("https://localhost:7166/api/PatronOperation/BorrowBook", requestOptions)
+        .then(response => {
+            // Handle based on status code
+            if (response.ok) {
+                return response.json();
+            } else {
+                return Promise.reject(response);
+            }
+        })
+        .then(data => {
+            console.log(data);
+            const borrowBtn = document.querySelector('.borrow-btn');
+            if (borrowBtn) {
+                borrowBtn.style.display = 'none';
+
+                const notAvailableBtn = document.createElement('button');
+                notAvailableBtn.innerHTML = 'Not Available';
+                notAvailableBtn.classList.add('borrow-btn', 'not-available');
+
+                borrowBtn.parentNode.insertBefore(notAvailableBtn, borrowBtn.nextSibling);
+            }
+        })
+        .catch(response => {
+            // Handle different error responses here
+            if (response.status === 400) { // Book is not available for borrowing
+                alert("Book is not available for borrowing.");
+            } else if (response.status === 404) { // Invalid patron or book ID
+                alert("Invalid patron or book ID. Please check and try again.");
+            } else if (response.status === 500) { // Server error
+                response.text().then(errorText => {
+                    console.error("Server Error:", errorText);
+                    alert("An error occurred. Please try again later.");
+                });
+            } else {
+                alert("An unexpected error occurred. Please try again.");
+            }
+        });
+}
 

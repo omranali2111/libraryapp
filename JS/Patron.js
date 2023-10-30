@@ -55,7 +55,11 @@ function addpatron(name, email, password, contactNumber, age, role) {
       var successMessage = document.createElement('div');
       successMessage.innerHTML = 'SignUp is Successful!';
       successMessage.style.color = 'green';
-      document.body.appendChild(successMessage);
+      var form = document.getElementById('signupForm');
+
+      // Append the successMessage right after the form
+      form.insertAdjacentElement('afterend', successMessage);
+
       
       // Redirect to the login page
       setTimeout(() => {
@@ -103,6 +107,9 @@ function addpatron(name, email, password, contactNumber, age, role) {
             console.log(data);
             localStorage.setItem("authToken", data.token);
             localStorage.setItem("userRole", data.role);
+            if (data.patronId) {
+                localStorage.setItem("patronId", data.patronId);
+            }
             window.location.href = "home.html";
         })
         .catch((error) => {
