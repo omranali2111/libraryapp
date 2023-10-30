@@ -18,8 +18,23 @@
         <input class="signup-input" type="password" name="password" placeholder="Password" required>
         <input class="signup-input" type="tel" name="contactnumber" placeholder="Contact Number" required>
         <input class="signup-input" type="number" name="age" placeholder="Age" min="1" max="150" required>
+        
+        
+        <div class="role-selection">
+            <span class="role-selection-text">SignUp As:</span>
+            <label for="userRole">
+                <input type="radio" id="userRole" name="role" value="User" required>
+                User
+            </label>
+            <label for="adminRole">
+                <input type="radio" id="adminRole" name="role" value="Admin" required>
+                Admin
+            </label>
+        </div>
+        
         <button type="submit" class="submit-button">Signup</button>
     </form>
+    
 </div>
 
 <script src="C:/Users/ict/Desktop/code-TRA/frontend/libraryapp/JS/Patron.js"></script>

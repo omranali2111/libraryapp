@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
     <link rel="stylesheet" href="C:\Users\ict\Desktop\code-TRA\frontend\libraryapp\Style\homestyle.css">
-    <script src="C:\Users\ict\Desktop\code-TRA\frontend\libraryapp\JS\bookModel.js"defer></script>
     <script src="C:\Users\ict\Desktop\code-TRA\frontend\libraryapp\JS\home.js" defer></script>
     <script src="C:\Users\ict\Desktop\code-TRA\frontend\libraryapp\JS\main.js"defer></script>
     <script src="C:\Users\ict\Desktop\code-TRA\frontend\libraryapp\JS\Patron.js"defer></script>
@@ -41,12 +40,32 @@
                 class="search"
             />
         </form>
+        <div class="admin-dropdown" id="adminDropdown">
+            <button class="admin-btn">Admin</button>
+            <div class="admin-dropdown-content">
+                <a href="AddBook.html">Add Book</a>
+                <a href="#manageUsers">Update Book</a>
+                <a href="#viewLogs">Delet Book</a>
+            </div>
+        </div>
         <div class="signout-button">
             <button class="signout-btn" onclick="logout()">Sign Out</button>
         </div>
     </header>
-    <main id="main"></main>
-
+    
+    
+    <main id="main">
+        
+        
+    </main>
+    <div id="bookModal" class="modal">
+        <div class="modal-content">
+            <h2>Book</h2>  
+            <span class="close-btn">&times;</span>
+            <div id="bookInfoContainer"></div>
+           
+        </div>
+    </div>
 
 </body>
 </html>

@@ -6,6 +6,7 @@
     <title>Login Page</title>
     <link rel="stylesheet" href="C:\Users\ict\Desktop\code-TRA\frontend\libraryapp\Style\PatronLogin.css">
     <script src="../JS/Patron.js" defer></script>
+    <script src="..\JS\home.js" defer></script>
 </head>
 <body>
 
@@ -16,9 +17,13 @@
     <form id="loginForm"> 
         <input class="login-input" id="email" type="email" name="email" placeholder="Email" required>
         <input class="login-input" id="password" type="password" name="password" placeholder="Password" required>
+        
+        
+      
+        
         <button type="submit" onclick="PatronLogin(event)" class="submit-button">Login</button>
-
     </form>
+    
     <div class="signup-link">
         Don't have an account? <a href="..\html\PatronSignUp.html">Click here</a> 
     </div>

@@ -1,10 +1,11 @@
+/*
 document.addEventListener('DOMContentLoaded', function() {
     const book = JSON.parse(sessionStorage.getItem('clickedBook'));
     if (book) {
         const bookModal = document.getElementById('bookModal');
-        const modalContent = bookModal.querySelector('.modal-content');
+        const bookInfoContainer = document.getElementById('bookInfoContainer');
 
-        modalContent.innerHTML = `
+        bookInfoContainer.innerHTML = `
         <div class="book-info">
             <img src="${book.imagePath}" alt="${book.title}" class="book-image">
             <div class="book-details">
@@ -15,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         </div>
     `;
-    
+
         bookModal.style.display = 'block';
         
         const closeButton = bookModal.querySelector('.close-btn');
@@ -28,3 +29,4 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 });
+*/
