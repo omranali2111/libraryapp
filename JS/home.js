@@ -25,6 +25,16 @@ function showBooks(url) {
         const el = document.createElement('div');
         const image = document.createElement('img');
         const text = document.createElement('h2');
+        const deleteButton = document.createElement('button');
+
+            text.innerText = book.title; 
+            image.src = book.imagePath;
+            image.alt = book.title; 
+            deleteButton.innerText = 'X'; 
+            deleteButton.className = 'delete-btn';
+            deleteButton.onclick = function() { handleDeleteClick(book.title); };
+            
+            
     
         text.innerHTML = book.title;
         image.src = book.imagePath;
@@ -52,6 +62,8 @@ function showBooks(url) {
                         <div class="book-actions">
                         <p class="book-description">${book.description}</p>
                         <button class="borrow-btn" onclick="handleBorrowClick(${book.id})">Borrow</button>
+                       
+
 
                          </div>
                     </div>
@@ -72,6 +84,7 @@ function showBooks(url) {
     
         el.appendChild(image);
         el.appendChild(text);
+        el.appendChild(deleteButton);
         main.appendChild(el);
         
        
@@ -313,3 +326,7 @@ function borrowBook(token, bookId, patronId) {
         });
 }
 
+document.getElementById('refreshPage').addEventListener('click', function(event) {
+    event.preventDefault(); 
+    location.reload(); 
+  });

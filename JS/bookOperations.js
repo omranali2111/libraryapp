@@ -73,6 +73,53 @@ document.getElementById('addBookForm').addEventListener('submit', function(e) {
         });
 });
 
+function showDeleteBook() {
+    
+    const deleteButtons = document.querySelectorAll('.delete-btn');
+    
+    
+    deleteButtons.forEach(function(button) {
+        button.style.display = 'inline-block';
+    });
+}
+
+function handleDeleteClick(bookTitle) {
+    
+    var token = localStorage.getItem("authToken"); 
+
+    
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer " + token);
+
+    
+    var requestOptions = {
+        method: 'DELETE',
+        headers: myHeaders,
+        redirect: 'follow'
+    };
+
+    
+    var encodedTitle = encodeURIComponent(bookTitle);
+
+    
+    
+    fetch(`https://localhost:7166/api/BookOperation?title=${encodedTitle}`, requestOptions)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.text();
+    })
+    .then(result => {
+        console.log(result);
+        alert(`Book with title "${bookTitle}" is deleted successfully.`);
+      
+    })
+    .catch(error => {
+        console.log('error', error);
+        alert('There was an error deleting the book.');
+    });
+}
 
 
 

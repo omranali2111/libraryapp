@@ -3,30 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Book</title>
+    <title>update Book</title>
     <link rel="stylesheet" href="../Style/AddBook.css">
     <script src="../JS/bookOperations.js"defer></script>
 </head>
 <body>
     <div class="add-book-container">
-        <h1>Add a New Book</h1>
+        <h1>Update Book</h1>
         <form id="addBookForm">
-            <label for="title">Title:</label>
+            <label for="title">book Id:</label>
+            <input type="text" id="bookId" name="Id" required> 
+
+            <label for="title">New Title:</label>
             <input type="text" id="bookTitle" name="title" required>
         
-            <label for="author">Author:</label>
+            <label for="author">New Author:</label>
             <input type="text" id="bookAuthor" name="author" required>
         
-            <label for="year">Publication Year:</label>
+            <label for="year">New Publication Year:</label>
             <input type="number" id="bookYear" name="year" min="1900" max="2099" required>
         
-            <label for="image">Image File:</label>
+            <label for="image">New Image File:</label>
             <input type="file" id="bookImage" name="image">
         
-            <label for="description">Description:</label>
+            <label for="description">New Description:</label>
             <textarea id="bookDescription" name="description" rows="5"></textarea>
         
-            <input type="submit" value="Add Book">
+            <input type="submit" value="Update Book">
             <div id="responseMessage"></div>
         </form>
     </div>
